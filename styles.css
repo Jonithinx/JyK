@@ -404,7 +404,7 @@ body {
     user-select: none;
     font-size: 1.5rem;
     color: var(--accent-color);
-    z-index: 20;
+    z-index: 13;
     animation: floatHeart 3s ease-in-out forwards;
 }
 
