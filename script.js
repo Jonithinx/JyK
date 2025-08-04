@@ -3,8 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const allPhotos = [];
     for (let i = 1; i <= 404; i++) allPhotos.push(`assets/fotos-juntos/foto (${i}).jpg`);
     allPhotos.push(`assets/fotos-juntos/foto (405).jpeg`);
-    for (let i = 406; i <= 414; i++) allPhotos.push(`assets/fotos-juntos/foto (${i}).png`);
-    for (let i = 415; i <= 417; i++) allPhotos.push(`assets/fotos-juntos/foto (${i}).webp`);
+    for (let i = 406; i <= 417; i++) allPhotos.push(`assets/fotos-juntos/foto (${i}).jpg`);
 
     const phrases = [
         "Sos mi todo 🥰",
