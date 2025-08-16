@@ -1,114 +1,66 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>¡Feliz Aniversario, Karleni! ❤️</title>
-
-    <!-- Fuentes -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
-
-    <!-- Estilos -->
-    <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aniversario Jona & Karleni</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <!-- Header y navegación principal -->
-    <header class="main-header">
-        <nav>
-            <a href="#inicio" class="logo-text">JyK</a>
-            <button class="menu-toggle">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-            <a href="#inicio">Inicio</a>
-            <a href="#nuestra-playlist">Nuestra Playlist</a>
-            <a href="#nuestro-cielo">Nuestro Cielo</a>
-            <a href="#nuestros-recuerdos">Nuestros Recuerdos</a>
-            <a href="#nuestro-futuro">Un Futuro Juntos</a>
-        </nav>
-    </header>
+  <header class="header">
+    <div class="logo">J&K 💖</div>
+    <nav class="nav" id="nav">
+      <a href="#inicio">Inicio</a>
+      <a href="#playlist">Playlist</a>
+      <a href="#cielo">Nuestro Cielo</a>
+      <a href="#recuerdos">Recuerdos</a>
+      <a href="#futuro">Futuro</a>
+    </nav>
+    <div class="menu-toggle" id="menu-toggle">☰</div>
+  </header>
 
-    <!-- Contenido principal -->
-    <main class="content-wrapper">
+  <section id="inicio" class="hero">
+    <div class="hero-content">
+      <h1>Feliz Aniversario, Karleni ❤️</h1>
+      <p>6 años de amor, recuerdos y sueños compartidos</p>
+    </div>
+  </section>
 
-        <!-- Sección Inicio -->
-        <section id="inicio" class="section intro-section">
-            <h1 class="title">¡Feliz Aniversario, Mi Amor!</h1>
-            <p class="message">Desde el 7 de Septiembre de 2019, mi vida es mucho más bonita gracias a vos, Karleni. 💖</p>
+  <section id="playlist" class="playlist">
+    <h2>Nuestra Playlist</h2>
+    <div class="playlist-grid">
+      <!-- Items dinámicos desde JS -->
+    </div>
+  </section>
 
-            <div class="polaroid">
-                <img src="assets/fotos-juntos/foto (1).jpg" alt="Jonathan y Karleni" />
-                <p>¡Nuestra primera foto juntos!</p>
-            </div>
-        </section>
+  <section id="cielo" class="cielo">
+    <h2>Nuestro Cielo</h2>
+    <canvas id="stars"></canvas>
+  </section>
 
-        <!-- Sección Playlist -->
-        <section id="nuestra-playlist" class="section playlist-section">
-            <h2>Nuestra Playlist del Amor</h2>
-            <p>¡Aquí están las canciones de Kevin Kaarl que nos recuerdan a nuestro amor, Karleni! 💕</p>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/HZoms5Nwts0" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen></iframe>
-                <iframe src="https://www.youtube.com/embed/7-Ikexq03O0" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen></iframe>
-                <iframe src="https://www.youtube.com/embed/8sY9Cf4HNfY" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen></iframe>
-            </div>
-        </section>
+  <section id="recuerdos" class="recuerdos">
+    <h2>Galería de Recuerdos</h2>
+    <div class="gallery" id="gallery">
+      <!-- Fotos dinámicas desde JS -->
+    </div>
+  </section>
 
-        <!-- Sección Nuestro Cielo -->
-        <section id="nuestro-cielo" class="section starry-sky-section">
-            <h2>Nuestro Cielo</h2>
-            <p>Pequeños recordatorios que viajan por el universo solo para vos.</p>
-            <!-- Aquí podrías añadir la animación o contenido dinámico -->
-        </section>
+  <section id="futuro" class="futuro">
+    <h2>Nuestro Futuro</h2>
+    <div class="sobre" id="sobre">
+      <div class="tarjeta" id="tarjeta">
+        <p>Juntos, siempre. 💌</p>
+      </div>
+    </div>
+  </section>
 
-        <!-- Sección Nuestros Recuerdos -->
-        <section id="nuestros-recuerdos" class="section memories-section">
-            <h2>Nuestros Recuerdos</h2>
-            <p>Pequeños momentos que han construido nuestra historia.</p>
-            <div class="gallery-container" id="galeria-recuerdos">
-                <!-- Las imágenes se cargarán con JS -->
-            </div>
-        </section>
+  <footer class="footer">
+    <p>Con todo mi amor — Jona 💚</p>
+  </footer>
 
-        <!-- Sección Nuestro Futuro -->
-        <section id="nuestro-futuro" class="section future-section">
-            <h2>Un Futuro Juntos</h2>
-            <div class="envelope-container-new">
-                <img src="assets/sobre-cerrado.png" alt="Sobre cerrado" class="envelope-image" />
-                <div class="card-new">
-                    <h3>Nuestro Futuro</h3>
-                    <p>
-                        En nuestro futuro veo viajes por el mundo, vos y yo descubriendo nuevos lugares y creando recuerdos
-                        inolvidables.<br /><br />
-                        Veo una vida llena de risas, cenas y de noches viendo películas.<br /><br />
-                        Nos veo construyendo una vida feliz, una casa, una familia, un par de carros, y enfrentando cada
-                        desafío de la mano.
-                    </p>
-                    <p class="signature">- Jona</p>
-                </div>
-            </div>
-            <p class="hint-text">¡Toca el sobre!</p>
-        </section>
+  <button id="back-to-top">↑</button>
 
-    </main>
-
-    <!-- Footer -->
-    <footer class="main-footer">
-        <p>&copy; 2025 Hecho con amor por Jona. 🫶</p>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
-
 </html>
