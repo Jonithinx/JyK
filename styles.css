@@ -98,8 +98,8 @@
     .stars-2{ opacity:.35; filter: blur(.3px) }
 
     /* ===== Galería (masonry + lightbox) ===== */
-    .masonry{ column-count: 3; column-gap: 16px; max-width: var(--maxw); margin: 10px auto 0; }
-    .masonry-item{ break-inside: avoid; margin-bottom: 16px; border-radius:16px; overflow:hidden; box-shadow: var(--shadow); background: #0f1a2f }
+    .masonry{ display: grid; grid-template-columns: repeat(auto-fill, minmax: (280px, 1fr)); gap: 16px }
+    .masonry-item{ width: 100%; }
     .masonry-item img{ width:100%; display:block; height:auto }
     @media (max-width: 1024px){ .masonry{ column-count: 2 } }
     @media (max-width: 640px){ .masonry{ column-count: 1 } }
@@ -119,7 +119,7 @@
     .envelope img{ width:min(360px, 86%); height:auto; filter: drop-shadow(0 12px 26px rgba(0,0,0,.35)); cursor:pointer; transition: transform .35s ease }
     .envelope img:hover{ transform: scale(1.04) }
 
-    .card-future{ background:#f7f7fb; color:#161616; border-radius:18px; padding:22px; width:min(95%, 520px); transform: translateY(10px) scale(.96); opacity:0; transition: opacity .5s ease, transform .5s ease }
+    .card-future{ background:#f7f7fb; color:#161616; border-radius:18px; padding:22px; width:min(95%, 520px); transform: translateY(10px) scale(.96); opacity:0; transition: opacity .5s ease, transform .5s ease; margin-top: 20px }
     .card-future.visible{ opacity:1; transform: translateY(0) scale(1) }
     .card-future h4{ margin:0 0 8px; color:#7a4bd9; font-size:1.4rem; text-align:center }
     .card-future p{ color:#2a2a2a; line-height:1.55 }
