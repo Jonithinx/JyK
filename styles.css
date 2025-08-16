@@ -118,21 +118,20 @@ body {
 .drawer {
   position: fixed;
   inset: 0;
+  display: none;
   z-index: 9999;
   pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.28s ease;
 }
 
-.drawer.active { 
-  pointer-events: auto;
-  opacity: 1;
-}
+.drawer.active { display: block; }
 
 .drawer .backdrop {
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,.45);
+  opacity: 1;
+  transition: opacity 0.28s ease;
+  pointer-events: auto;
 }
 
 .drawer-panel {
@@ -153,9 +152,7 @@ body {
   z-index: 10000;
 }
 
-.drawer.active .drawer-panel { 
-  transform: translateX(0); 
-}
+.drawer.active .drawer-panel { transform: translateX(0); }
 
 .drawer a {
   color: var(--text);
