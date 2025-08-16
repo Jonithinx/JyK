@@ -379,6 +379,14 @@ h1.title {
   transform: translateY(0);
 }
 
+.see-more svg{
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  display: block;
+  fll: currentColor;
+}
+
 /* Lightbox */
 .lightbox {
   position: fixed;
