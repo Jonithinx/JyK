@@ -45,10 +45,10 @@
     .burger svg{ width:22px; height:22px }
 
     /* Drawer */
-    .drawer{ position:fixed; inset:0; display:none; top: 0; left: 0; z-index: 9999 }
+    .drawer{ position:fixed; inset:0; display:none; z-index: 9999 }
     .drawer.active{ display:block; }
     .drawer .backdrop{ position:absolute; inset:0; background:rgba(0,0,0,.45); }
-    .drawer-panel{ position:absolute; right:0; top:0; height:100%; width:min(86vw, 340px); background:#0e1628; border-left:1px solid rgba(255,255,255,.06); box-shadow:var(--shadow); transform: translateX(100%); transition:transform .28s ease; display:flex; flex-direction:column; padding:22px; gap:10px }
+    .drawer-panel{ position:absolute; right:0; top:0; height:100%; width:min(86vw, 340px); background:#0e1628; border-left:1px solid rgba(255,255,255,.06); box-shadow:var(--shadow); transform: translateX(100%); transition:transform .28s ease; display:flex; flex-direction:column; padding:22px; gap:10px; z-index: 10000 }
     .drawer.active .drawer-panel{ transform:translateX(0) }
     .drawer a{ color:var(--text); text-decoration:none; font-weight:600; padding:12px 10px; border-radius:12px; }
     .drawer a:hover{ background:var(--glass-strong) }
