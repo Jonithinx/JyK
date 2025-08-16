@@ -344,12 +344,15 @@ h1.title {
    Galería Masonry + Lightbox
    ========================= */
 .masonry {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  column-count: 3;
   gap: 16px;
 }
 
-.masonry-item { break-inside: auto; width: 100%; }
+.masonry-item { 
+  break-inside: avoid; 
+  margin-bottom: 16px;
+  width: 100%; 
+}
 
 .masonry-item img { width: 100%; display: block; height: auto; }
 
