@@ -1,66 +1,152 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aniversario Jona & Karleni</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jona & Karleni — Aniversario</title>
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Header -->
   <header class="header">
-    <div class="logo">J&K 💖</div>
-    <nav class="nav" id="nav">
+    <nav class="nav" aria-label="Principal">
+      <a class="brand" href="#inicio">
+        <span class="brand-badge">J&K</span>
+        <span>Jona & Karleni</span>
+      </a>
+      <div class="links">
+        <a href="#inicio">Inicio</a>
+        <a href="#playlist">Playlist</a>
+        <a href="#cielo">Nuestro Cielo</a>
+        <a href="#recuerdos">Recuerdos</a>
+        <a href="#futuro">Futuro</a>
+      </div>
+      <button class="burger" aria-label="Abrir menú" id="openMenu">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Drawer móvil -->
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <div class="backdrop" id="drawerBackdrop"></div>
+    <div class="drawer-panel">
       <a href="#inicio">Inicio</a>
       <a href="#playlist">Playlist</a>
       <a href="#cielo">Nuestro Cielo</a>
       <a href="#recuerdos">Recuerdos</a>
       <a href="#futuro">Futuro</a>
-    </nav>
-    <div class="menu-toggle" id="menu-toggle">☰</div>
-  </header>
-
-  <section id="inicio" class="hero">
-    <div class="hero-content">
-      <h1>Feliz Aniversario, Karleni ❤️</h1>
-      <p>6 años de amor, recuerdos y sueños compartidos</p>
     </div>
-  </section>
+  </aside>
 
-  <section id="playlist" class="playlist">
-    <h2>Nuestra Playlist</h2>
-    <div class="playlist-grid">
-      <!-- Items dinámicos desde JS -->
-    </div>
-  </section>
-
-  <section id="cielo" class="cielo">
-    <h2>Nuestro Cielo</h2>
-    <canvas id="stars"></canvas>
-  </section>
-
-  <section id="recuerdos" class="recuerdos">
-    <h2>Galería de Recuerdos</h2>
-    <div class="gallery" id="gallery">
-      <!-- Fotos dinámicas desde JS -->
-    </div>
-  </section>
-
-  <section id="futuro" class="futuro">
-    <h2>Nuestro Futuro</h2>
-    <div class="sobre" id="sobre">
-      <div class="tarjeta" id="tarjeta">
-        <p>Juntos, siempre. 💌</p>
+  <main>
+    <!-- Hero -->
+    <section id="inicio" class="section">
+      <div class="container hero">
+        <div>
+          <div class="kicker">Desde 07·09·2019</div>
+          <h1 class="title">¡Feliz Aniversario, mi amor! ❤️</h1>
+          <p class="subtitle">Cada día a tu lado se siente como esa canción que no queremos que termine. Gracias por caminar conmigo — hoy, mañana y siempre.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#playlist">Escuchar nuestra vibra</a>
+            <a class="btn btn-ghost" href="#recuerdos">Ver recuerdos</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <img class="hero-photo" src="assets/fotos-juntos/foto (1).jpg" alt="Jonathan y Karleni"/>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <footer class="footer">
-    <p>Con todo mi amor — Jona 💚</p>
+    <!-- Playlist -->
+    <section id="playlist" class="section">
+      <div class="container playlist">
+        <div>
+          <div class="kicker">Nuestra Playlist</div>
+          <h2 class="title" style="font-size: clamp(28px, 4vw, 42px)">Momentos que suenan a nosotros</h2>
+          <p class="subtitle">Tres canciones que se sienten como tú y yo. Puedes dejarlas sonando mientras navegas 💿</p>
+        </div>
+        <div class="cards reveal">
+          <div class="card">
+            <div class="ratio">
+              <iframe src="https://www.youtube.com/embed/HZoms5Nwts0" title="YouTube video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <p>Kevin Kaarl — <strong>Vete</strong></p>
+          </div>
+          <div class="card">
+            <div class="ratio">
+              <iframe src="https://www.youtube.com/embed/7-Ikexq03O0" title="YouTube video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <p>Kevin Kaarl — <strong>Amor Viejo</strong></p>
+          </div>
+          <div class="card">
+            <div class="ratio">
+              <iframe src="https://www.youtube.com/embed/8sY9Cf4HNfY" title="YouTube video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <p>Kevin Kaarl — <strong>San Lucas</strong></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nuestro Cielo -->
+    <section id="cielo" class="section">
+      <div class="container sky reveal">
+        <div class="sky-inner">
+          <div class="layer stars-1" data-parallax="0.15"></div>
+          <div class="layer stars-2" data-parallax="0.3"></div>
+          <h3>Nuestro cielo — mensajes que flotan solo para vos ✨</h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recuerdos -->
+    <section id="recuerdos" class="section">
+      <div class="container">
+        <div class="center">
+          <div class="kicker">Nuestros recuerdos</div>
+          <h2 class="title" style="font-size: clamp(28px, 4vw, 42px)">Momentos que guardo en el corazón</h2>
+          <p class="subtitle">Iré cargando fotos poco a poco para que la página vuele. Toca una para verla en grande.</p>
+        </div>
+        <div id="masonry" class="masonry"></div>
+        <div class="center">
+          <button id="seeMore" class="see-more" type="button" aria-label="Ver más fotos">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            Ver más fotos
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Futuro -->
+    <section id="futuro" class="section">
+      <div class="container future">
+        <div class="envelope" id="envelope">
+          <img src="assets/sobre-cerrado.png" alt="Sobre cerrado" id="envelopeImg" />
+        </div>
+        <div>
+          <div class="kicker">Nuestro futuro</div>
+          <div class="card-future" id="futureCard">
+            <h4>Nuestro plan favorito</h4>
+            <p>Nos veo viajando por el mundo, con playlist, fotos nuevas y un hogar que suene a risas. Una casa con nuestras plantas, dos tazas de té, y una colección de películas para domingos eternos.</p>
+            <p>Vamos a construirlo todo juntos: proyectos, metas y recuerdos. Lo que venga, lo enfrentamos de la mano.</p>
+            <p class="signature">— Jona</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 — Hecho con amor por Jona. 🫶
   </footer>
 
-  <button id="back-to-top">↑</button>
+  <button class="fab" id="toTop" aria-label="Volver arriba">▲</button>
 
-  <script src="script.js"></script>
-</body>
+  <div class="lightbox" id="lightbox" aria-hidden="true"><img alt="Foto ampliada"/></div>
+
 </html>
