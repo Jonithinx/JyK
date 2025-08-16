@@ -104,8 +104,8 @@
     @media (max-width: 1024px){ .masonry{ column-count: 2 } }
     @media (max-width: 640px){ .masonry{ column-count: 1 } }
 
-    .center{ text-align:center }
-    .see-more{ margin: 22px auto 0; display:flex; justify-content:center; align-items:center; gap:8px; padding:10px 16px; border-radius:14px; border:1px solid rgba(255,255,255,.12); background:var(--glass); color:var(--text); cursor:pointer; font-weight:700 }
+    .center{ display: flex; justify-content: center; margin-top: 22px }
+    .see-more{ display: flex; justify-content: center; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.12); background: var(--glass); color: var(--text); cursor: pointer; font-weight: 700 }
     .see-more:hover{ background:var(--glass-strong) }
 
     /* Lightbox */
