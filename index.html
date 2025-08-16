@@ -13,28 +13,23 @@
 </head>
 <body>
   <!-- Header -->
-  <header>
-    <nav class="navbar">
-      <div class="logo">TuLogo</div>
-      <ul class="nav-links">
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Servicios</a></li>
-        <li><a href="#">Contacto</a></li>
-      </ul>
-      <button class="burger" id="burgerBtn" aria-label="Abrir menú">
-        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none">
-          <path d="M3 6h18M3 12h18M3 18h18"/>
-        </svg>
-      </button>
-    </nav>
-  
-    <div class="mobile-menu" id="mobileMenu">
-      <ul>
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Servicios</a></li>
-        <li><a href="#">Contacto</a></li>
-      </ul>
-    </div>
+  <header class="header"> 
+    <nav class="nav" aria-label="Principal"> 
+      <a class="brand" href="#inicio"> 
+        <span class="brand-badge">J&K</span> 
+        <span>Jona & Karleni</span> 
+      </a> 
+      <div class="links"> 
+        <a href="#inicio">Inicio</a> 
+        <a href="#playlist">Playlist</a> 
+        <a href="#cielo">Nuestro Cielo</a> 
+        <a href="#recuerdos">Recuerdos</a> 
+        <a href="#futuro">Futuro</a> 
+      </div> 
+      <button class="burger" aria-label="Abrir menú" id="openMenu"> 
+        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" ><path d="M3 6h18M3 12h18M3 18h18"/></svg> 
+      </button> 
+    </nav> 
   </header>
 
   <!-- Drawer móvil -->
