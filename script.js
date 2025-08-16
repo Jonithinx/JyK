@@ -11,11 +11,17 @@ const drawer = qs('#drawer');
 const openMenu = qs('#openMenu');
 const backdrop = qs('#drawerBackdrop');
 
-openMenu.addEventListener('click', () => drawer.classList.add('active'));
-backdrop.addEventListener('click', () => drawer.classList.remove('active'));
-qsa('.drawer a').forEach(a =>
-  a.addEventListener('click', () => drawer.classList.remove('active'))
-);
+if (openMenu && drawer) {
+  openMenu.addEventListener('click', () => drawer.classList.add('active'));
+}
+
+if (backdrop && drawer) {
+  backdrop.addEventListener('click', () => drawer.classList.remove('active'));
+}
+
+qsa('.drawer a').forEach(a => {
+  if (drawer) a.addEventListener('click', () => drawer.classList.remove('active'));
+});
 
 // =========================
 // Reveal on scroll
@@ -60,6 +66,7 @@ const masonry = qs('#masonry');
 const seeMore = qs('#seeMore');
 
 function loadMore() {
+  if (!masonry || !seeMore) return;
   if (loaded >= allPhotos.length) {
     seeMore.disabled = true;
     seeMore.textContent = 'No hay más fotos';
@@ -82,7 +89,7 @@ function loadMore() {
   loaded = max;
 }
 
-seeMore.addEventListener('click', loadMore);
+if (seeMore) seeMore.addEventListener('click', loadMore);
 loadMore();
 
 function randomPhoto() {
@@ -96,15 +103,18 @@ const lightbox = qs('#lightbox');
 const lbImg = qs('#lightbox img');
 
 function openLightbox(src) {
+  if (!lbImg || !lightbox) return;
   lbImg.src = src;
   lightbox.classList.add('active');
   lightbox.setAttribute('aria-hidden', 'false');
 }
 
-lightbox.addEventListener('click', () => {
-  lightbox.classList.remove('active');
-  lightbox.setAttribute('aria-hidden', 'true');
-});
+if (lightbox) {
+  lightbox.addEventListener('click', () => {
+    lightbox.classList.remove('active');
+    lightbox.setAttribute('aria-hidden', 'true');
+  });
+}
 
 // =========================
 // Frases & fotos flotantes en el cielo
@@ -120,6 +130,7 @@ const phrases = [
 const cielo = qs('#cielo .sky-inner');
 
 function spawnFloating() {
+  if (!cielo) return;
   const el = document.createElement('div');
   el.style.position = 'absolute';
   el.style.left = Math.random() * 90 + 5 + '%';
@@ -160,12 +171,15 @@ const envelopeImg = qs('#envelopeImg');
 const futureCard = qs('#futureCard');
 const envelope = qs('#envelope');
 
-envelopeImg.addEventListener('click', () => {
-  futureCard.classList.add('visible');
-  for (let i = 0; i < 6; i++) setTimeout(spawnHeart, i * 160);
-});
+if (envelopeImg && futureCard && envelope) {
+  envelopeImg.addEventListener('click', () => {
+    futureCard.classList.add('visible');
+    for (let i = 0; i < 6; i++) setTimeout(spawnHeart, i * 160);
+  });
+}
 
 function spawnHeart() {
+  if (!envelope) return;
   const span = document.createElement('span');
   span.textContent = '💖';
   span.className = 'heart';
@@ -183,9 +197,11 @@ function spawnHeart() {
 // Back to top FAB
 // =========================
 const toTop = qs('#toTop');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 500) toTop.classList.add('visible');
-  else toTop.classList.remove('visible');
-});
+if (toTop) {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) toTop.classList.add('visible');
+    else toTop.classList.remove('visible');
+  });
 
-toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+}
