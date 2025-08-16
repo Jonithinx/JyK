@@ -2,16 +2,6 @@
     const qs = (s, el=document) => el.querySelector(s);
     const qsa = (s, el=document) => [...el.querySelectorAll(s)];
 
-    // === BURGER MENU ===
-    const burgerBtn = document.getElementById("burgerBtn");
-    const mobileMenu = document.getElementById("mobileMenu");
-    
-     if (burgerBtn && mobileMenu) {
-        burgerBtn.addEventListener("click", () => {
-          mobileMenu.classList.toggle("open");
-     });
-    }
-
     // ===== Drawer =====
     const drawer = qs('#drawer');
     const openMenu = qs('#openMenu');
