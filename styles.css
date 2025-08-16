@@ -138,7 +138,7 @@ body {
   pointer-events: auto;
 }
 
-.drawer .active .backdrop {
+.drawer.active .backdrop {
   opacity: 1;
 }
 
