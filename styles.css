@@ -19,21 +19,17 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  margin:0;
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
   color:var(--text);
   background: radial-gradient(80% 120% at 10% 10%, #101a31 0%, transparent 60%),
               radial-gradient(90% 120% at 100% 0%, #24133f 0%, transparent 55%),
               linear-gradient(180deg, var(--bg-1), var(--bg-2));
-  min-height:100vh;
-  overflow-x:hidden;
+  min-height:100vh; overflow-x:hidden;
 }
 
 /* ===== Header moderno ===== */
 .header{
-  position:sticky;
-  top:0;
-  z-index:50;
+  position:sticky; top:0; z-index:50;
   backdrop-filter: saturate(140%) blur(12px);
   background: linear-gradient(180deg, rgba(14,22,40,.65), rgba(14,22,40,.35));
   border-bottom: 1px solid rgba(255,255,255,.06);
@@ -48,49 +44,18 @@ body{
 .burger{ display: none; margin-left: auto; width: 42px; height: 42px; background: transparent; border: none; color: var(--text); place-items: center; cursor: pointer }
 .burger svg{ width:22px; height:22px }
 
-/* ===== Drawer animado ===== */
-.drawer {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.28s ease;
+/* ===== Drawer ===== */
+.drawer{ position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0; transition: opacity 0.28s ease }
+.drawer.active{ pointer-events: auto; opacity: 1 }
+.drawer .backdrop{ position:absolute; inset:0; background: rgba(0,0,0,0.45) }
+.drawer-panel{ position:absolute; right:0; top:0; height:100%; width:min(86vw, 340px); background:#0e1628; border-left:1px solid rgba(255,255,255,.06); box-shadow:var(--shadow); transform: translateX(100%); transition: transform 0.28s ease; display:flex; flex-direction:column; padding:22px; gap:10px; z-index:10000 }
+.drawer.active .drawer-panel{
+  transform: translateX(0);
 }
-.drawer.active {
-  pointer-events: auto;
-  opacity: 1;
-}
-.drawer .backdrop{
-  position:absolute;
-  inset:0;
-  background: rgba(0,0,0,0.45);
-}
-.drawer-panel{
-  position:absolute;
-  right:0;
-  top:0;
-  height:100%;
-  width:min(86vw, 340px);
-  background:#0e1628;
-  border-left:1px solid rgba(255,255,255,.06);
-  box-shadow:var(--shadow);
-  transform: translateX(100%);
-  transition: transform 0.28s ease;
-  display:flex;
-  flex-direction:column;
-  padding:22px;
-  gap:10px;
-  z-index:10000;
-}
-.drawer.active .drawer-panel{ transform: translateX(0) }
 .drawer a{ color:var(--text); text-decoration:none; font-weight:600; padding:12px 10px; border-radius:12px }
 .drawer a:hover{ background:var(--glass-strong) }
 
-@media (max-width: 860px){
-  .links{ display:none }
-  .burger{ display:grid }
-}
+@media (max-width: 860px){ .links{ display:none } .burger{ display:grid } }
 
 /* ===== Hero ===== */
 .section{ padding: clamp(64px, 10vh, 120px) 20px }
@@ -111,6 +76,25 @@ h1.title{ font-size: clamp(38px, 5vw, 64px); line-height:1.05; margin:.3em 0; }
 .hero-photo{ width:min(380px, 80%); aspect-ratio: 1 / 1; object-fit:cover; border-radius:20px; box-shadow: var(--shadow) }
 .hero-card::after{ content:""; position:absolute; inset:-40px; background: radial-gradient(50% 50% at 30% 0%, rgba(255,201,222,.22), transparent 60%); pointer-events:none }
 
+/* ===== Playlist ===== */
+.playlist{ display:grid; gap:22px }
+.cards{ display:grid; grid-template-columns: repeat(3, 1fr); gap:18px }
+.card{ background:var(--glass); border:1px solid rgba(255,255,255,.08); border-radius: var(--radius); box-shadow: var(--shadow); padding:16px }
+.ratio{ position:relative; width:100%; padding-bottom:56.25%; border-radius:16px; overflow:hidden }
+.ratio iframe{ position:absolute; inset:0; width:100%; height:100%; border:0 }
+.card p{ color:var(--muted); margin-top:12px; font-size:.95rem }
+
+@media (max-width: 900px){ .cards{ grid-template-columns:1fr 1fr } }
+@media (max-width: 640px){ .cards{ grid-template-columns:1fr } }
+
+/* ===== Nuestro Cielo (parallax sutil) ===== */
+.sky{ position:relative; border-radius: var(--radius-lg); overflow:hidden; background: linear-gradient(180deg, #0b1326, #130d2a); border:1px solid rgba(255,255,255,.06); box-shadow:var(--shadow); }
+.sky-inner{ position:relative; min-height: 50vh; display:grid; place-items:center; padding:44px }
+.sky h3{ margin:0; font-size: clamp(24px, 3vw, 34px) }
+.layer{ position:absolute; inset:0; pointer-events:none }
+.stars-1, .stars-2{ background-image: radial-gradient(2px 2px at 20px 30px, #fff 60%, transparent 60%), radial-gradient(2px 2px at 80% 60%, #fff 60%, transparent 60%), radial-gradient(1px 1px at 40% 80%, #fff 60%, transparent 60%); background-size: 160px 160px, 200px 200px, 260px 260px; opacity:.6 }
+.stars-2{ opacity:.35; filter: blur(.3px) }
+
 /* ===== Galería (masonry + lightbox) ===== */
 .masonry{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px }
 .masonry-item{ break-inside: auto; width: 100% }
@@ -118,12 +102,9 @@ h1.title{ font-size: clamp(38px, 5vw, 64px); line-height:1.05; margin:.3em 0; }
 @media (max-width: 1024px){ .masonry{ column-count: 2 } }
 @media (max-width: 640px){ .masonry{ column-count: 1 } }
 
-.center{
-  display:flex;
-  justify-content:center;
-  margin-top:22px;
-}
+.center{ text-align:center }
 .see-more{
+  margin: 22px auto 0;
   display:flex;
   justify-content:center;
   align-items:center;
@@ -142,6 +123,30 @@ h1.title{ font-size: clamp(38px, 5vw, 64px); line-height:1.05; margin:.3em 0; }
 .lightbox{ position:fixed; inset:0; background:rgba(0,0,0,.75); display:none; align-items:center; justify-content:center; z-index:60; }
 .lightbox.active{ display:flex }
 .lightbox img{ max-width:90vw; max-height:85vh; border-radius:18px; box-shadow:var(--shadow) }
+
+/* ===== Nuestro Futuro ===== */
+.future{ display:grid; grid-template-columns: .9fr 1.1fr; gap:26px; align-items:center }
+.envelope{ position:relative; min-height: 360px; border-radius: var(--radius-lg); background: var(--glass); border:1px solid rgba(255,255,255,.08); box-shadow:var(--shadow); overflow:hidden; display:grid; place-items:center }
+.envelope img{ width:min(360px, 86%); height:auto; filter: drop-shadow(0 12px 26px rgba(0,0,0,.35)); cursor:pointer; transition: transform .35s ease }
+.envelope img:hover{ transform: scale(1.04) }
+
+.card-future{ background:#f7f7fb; color:#161616; border-radius:18px; padding:22px; width:min(95%, 520px); transform: translateY(10px) scale(.96); opacity:0; transition: opacity .5s ease, transform .5s ease; margin-top: 20px }
+.card-future.visible{ opacity:1; transform: translateY(0) scale(1) }
+.card-future h4{ margin:0 0 8px; color:#7a4bd9; font-size:1.4rem; text-align:center }
+.card-future p{ color:#2a2a2a; line-height:1.55 }
+.card-future .signature{ text-align:right; font-weight:800 }
+
+/* corazones discretos */
+.heart{ position:absolute; font-size: 18px; opacity:0; animation: floatUp 2.8s ease forwards }
+@keyframes floatUp{ from{ transform: translateY(0); opacity:.7 } to{ transform: translateY(-70px); opacity:0 } }
+
+/* ===== Utilidades ===== */
+.kicker + .title + .subtitle{ max-width: 62ch }
+.glass{ background:var(--glass); border:1px solid rgba(255,255,255,.1); border-radius: var(--radius); box-shadow: var(--shadow); }
+.muted{ color:var(--muted) }
+
+/* ===== Footer ===== */
+footer{ padding:30px 16px; text-align:center; color:var(--muted) }
 
 /* ===== FAB Back to top ===== */
 .fab{ position:fixed; right:18px; bottom:18px; width:48px; height:48px; border-radius:16px; display:grid; place-items:center; background:linear-gradient(135deg, var(--primary), var(--violet)); color:#0b1220; border:none; box-shadow: var(--shadow); cursor:pointer; z-index:55; opacity:0; transform: translateY(10px); transition:.2s ease }
