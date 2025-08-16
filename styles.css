@@ -123,7 +123,10 @@ body {
   pointer-events: none;
 }
 
-.drawer.active { display: block; }
+.drawer.active { 
+  display: block; 
+  pointer-events: auto;
+}
 
 .drawer .backdrop {
   position: absolute;
