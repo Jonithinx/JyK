@@ -120,13 +120,10 @@ body {
   inset: 0;
   z-index: 9999;
   pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.28s ease;
 }
 
 .drawer.active { 
   pointer-events: auto;
-  opacity: 1;
 }
 
 .drawer .backdrop {
@@ -135,11 +132,12 @@ body {
   background: rgba(0,0,0,.45);
   opacity: 0;
   transition: opacity 0.28s ease;
-  pointer-events: auto;
+  pointer-events: none;
 }
 
 .drawer.active .backdrop{
   opacity: 1;
+  pointer-events: auto;
 }
 
 .drawer-panel {
