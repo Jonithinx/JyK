@@ -116,6 +116,9 @@ function actualizarCuentaRegresiva() {
     const diff = targetDate - hondurasTime;
 
     if (diff <= 0) {
+        // Cambiar URL visible a /JyK
+        history.pushState(null, "", "JyK");
+        // Redirigir a index2.html
         window.location.href = "index2.html";
         return;
     }
