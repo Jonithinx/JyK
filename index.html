@@ -112,7 +112,7 @@ function actualizarCuentaRegresiva() {
     const utcNow = now.getTime() + (now.getTimezoneOffset() * 60000);
     const hondurasTime = new Date(utcNow - 6 * 60 * 60000);
 
-    const targetDate = new Date('2025-09-07T00:00:00-06:00');
+    const targetDate = new Date('2025-08-07T00:00:00-00:00');
     const diff = targetDate - hondurasTime;
 
     if (diff <= 0) {
