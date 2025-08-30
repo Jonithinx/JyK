@@ -205,3 +205,119 @@ if (toTop) {
 
   toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
+
+// =========================
+// Overlay épico + hype diario
+// =========================
+const anniversaryDate = new Date('2025-09-07T00:00:00'); // fecha del aniversario
+const startHypeDate = new Date('2025-08-31T00:00:00'); // 7 días antes
+
+const dailyPhrases = [
+  "Karleni, algo épico viene... 😏",     // 7 días antes
+  "Prepárate, amor 💖",                  // 6 días antes
+  "No te imaginas lo que se viene 🌟",   // 5 días antes
+  "Un día más cerca 😍",                 // 4 días antes
+  "Sos parte de esto 💘",                // 3 días antes
+  "Cada detalle es para vos ✨",         // 2 días antes
+  "Ya falta poquito... 🔥"               // 1 día antes
+];
+
+// Crear overlay
+const hypeOverlay = document.createElement('div');
+hypeOverlay.id = 'hypeOverlay';
+Object.assign(hypeOverlay.style, {
+  position: 'fixed',
+  inset: '0',
+  background: 'linear-gradient(135deg, #B7F4E0, #FFC9DE)',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  zIndex: '99999',
+  color: '#081322',
+  fontFamily: 'Inter, sans-serif',
+  textAlign: 'center',
+  padding: '20px',
+  overflow: 'hidden',
+  fontWeight: '800',
+  fontSize: 'clamp(24px,5vw,48px)'
+});
+document.body.appendChild(hypeOverlay);
+
+// Contenedor de texto
+const hypeText = document.createElement('div');
+hypeText.id = 'hypeText';
+hypeOverlay.appendChild(hypeText);
+
+// Glow dinámico
+let glowIntensity = 0;
+function updateGlow() {
+  glowIntensity = Math.min(glowIntensity + 0.03, 0.6); // sube cada tick
+  hypeOverlay.style.boxShadow = `0 0 ${30 + glowIntensity*50}px rgba(255,255,255,${0.2 + glowIntensity}) inset`;
+  requestAnimationFrame(updateGlow);
+}
+updateGlow();
+
+// Actualizar frase/contador diario
+function updateHype() {
+  const now = new Date();
+  const diff = anniversaryDate - now;
+  const diffDays = Math.ceil((anniversaryDate - now)/(1000*60*60*24));
+
+  if(diff <= 0){
+    hypeOverlay.remove();
+    clearInterval(hypeInterval);
+    return;
+  }
+
+  if(now < startHypeDate){
+    // Más de 7 días → solo contador
+    const days = Math.floor(diff / (1000*60*60*24));
+    const hours = Math.floor((diff / (1000*60*60)) % 24);
+    const minutes = Math.floor((diff / (1000*60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+    hypeText.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  } else {
+    // 7 días antes → mostrar frase del día
+    const dayIndex = 7 - diffDays;
+    hypeText.textContent = dailyPhrases[dayIndex] || "¡Ya casi, amor! 💖";
+  }
+}
+const hypeInterval = setInterval(updateHype, 1000);
+updateHype();
+
+// Floating hearts + frases
+function spawnHypeElement() {
+  if(!hypeOverlay) return;
+
+  const el = document.createElement('div');
+  const isHeart = Math.random() < 0.6; // 60% corazones, 40% frase
+  if(isHeart){
+    el.textContent = '💖';
+    el.style.fontSize = (18 + Math.random()*24)+'px';
+  } else {
+    const phrase = dailyPhrases[Math.floor(Math.random()*dailyPhrases.length)];
+    el.textContent = phrase;
+    el.style.fontSize = (16 + Math.random()*18)+'px';
+    el.style.fontWeight = '700';
+  }
+
+  el.style.position = 'absolute';
+  el.style.left = Math.random()*80 + 10 + '%';
+  el.style.top = Math.random()*80 + 10 + '%';
+  el.style.opacity = 0;
+  el.style.transition = 'transform 1s ease, opacity 1s ease';
+  hypeOverlay.appendChild(el);
+
+  requestAnimationFrame(() => {
+    el.style.opacity = 1;
+    el.style.transform = `translateY(-40px)`;
+  });
+
+  setTimeout(() => {
+    el.style.opacity = 0;
+    el.style.transform = `translateY(-80px)`;
+    setTimeout(() => el.remove(), 1000);
+  }, 2500);
+}
+setInterval(spawnHypeElement, 1000);
