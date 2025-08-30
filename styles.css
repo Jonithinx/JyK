@@ -539,3 +539,38 @@ footer { padding: 30px 16px; text-align: center; color: var(--muted); }
 }
 
 .reveal.visible { opacity: 1; transform: none; }
+
+/* =========================
+   Sección Mensaje
+   ========================= */
+.mensaje-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.mensaje-form textarea {
+  resize: none;
+  padding: 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.15);
+  background: var(--glass);
+  color: var(--text);
+  font-family: Inter, sans-serif;
+  font-size: 1rem;
+  min-height: 120px;
+  transition: border .25s ease, background .25s ease;
+}
+
+.mensaje-form textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: rgba(183,244,224,0.1);
+}
+
+.mensaje-form button {
+  align-self: flex-end;
+}
+
