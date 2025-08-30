@@ -210,7 +210,7 @@ if (toTop) {
 // Overlay épico + hype diario
 // =========================
 const anniversaryDate = new Date('2025-09-07T00:00:00'); // fecha del aniversario
-const startHypeDate = new Date('2025-08-31T00:00:00'); // 7 días antes
+const startHypeDate = new Date('2025-08-29T00:00:00'); // 7 días antes
 
 const dailyPhrases = [
   "Karleni, algo épico viene... 😏",     // 7 días antes
@@ -321,3 +321,26 @@ function spawnHypeElement() {
   }, 2500);
 }
 setInterval(spawnHypeElement, 1000);
+
+// =========================
+// Formulario de mensaje
+// =========================
+const mensajeForm = qs('#mensajeForm');
+const mensajeInput = qs('#mensajeInput');
+const mensajeConfirm = qs('#mensajeConfirm');
+
+if (mensajeForm && mensajeInput && mensajeConfirm) {
+  mensajeForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const mensaje = mensajeInput.value.trim();
+    if (!mensaje) return;
+
+    // Aquí podés agregar lógica para enviar a servidor o guardar en localStorage
+    console.log("Mensaje enviado:", mensaje);
+
+    mensajeInput.value = '';
+    mensajeConfirm.style.display = 'block';
+    setTimeout(() => mensajeConfirm.style.display = 'none', 3500);
+  });
+}
+
