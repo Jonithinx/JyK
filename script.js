@@ -210,7 +210,7 @@ if (toTop) {
 // Overlay épico + hype diario
 // =========================
 const anniversaryDate = new Date('2025-09-07T00:00:00'); // fecha del aniversario
-const startHypeDate = new Date('2025-08-29T00:00:00'); // 7 días antes
+const startHypeDate = new Date('2025-08-31T00:00:00'); // 7 días antes
 
 const dailyPhrases = [
   "Karleni, algo épico viene... 😏",     // 7 días antes
