@@ -228,3 +228,55 @@ if (mensajeForm && mensajeInput && mensajeConfirm) {
   });
 }
 
+// =========================
+// Frases Hype por día
+// =========================
+const phrasesByDay = [
+  "Sos mi todo 🥰",
+  "Te amo infinitamente ❤️",
+  "Juntos por siempre 💖",
+  "Mi vida con vos es un sueño ✨",
+  "Cada día a tu lado es maravilloso 😊",
+  "Sos la mejor parte de mí 🫶",
+  "Nuestro amor es único 💘"
+];
+
+const hypeCielo = qs('#cielo .sky-inner');
+const targetDate = new Date('2025-09-07'); // fecha objetivo
+const now = new Date();
+const diffTime = targetDate - now;
+const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+function spawnDailyHype() {
+  if (!hypeCielo) return;
+
+  // Solo mostrar frases si faltan 7 días o menos
+  if (diffDays > 7) return;
+
+  // Calcular índice de frase según el día (7 días antes → índice 0, 1 día antes → índice 6)
+  const dayIndex = 7 - diffDays;
+  if (dayIndex < 0 || dayIndex >= phrasesByDay.length) return;
+
+  const el = document.createElement('div');
+  el.textContent = phrasesByDay[dayIndex];
+  el.style.position = 'absolute';
+  el.style.left = Math.random() * 90 + 5 + '%';
+  el.style.top = Math.random() * 70 + 15 + '%';
+  el.style.transition = 'transform .6s ease, opacity .6s ease';
+  el.style.opacity = '0';
+  hypeCielo.appendChild(el);
+
+  requestAnimationFrame(() => {
+    el.style.opacity = '1';
+    el.style.transform = 'translateY(-8px)';
+  });
+
+  setTimeout(() => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(-22px)';
+    setTimeout(() => el.remove(), 600);
+  }, 2500);
+}
+
+// Ejecutar solo una vez al cargar la página
+spawnDailyHype();
