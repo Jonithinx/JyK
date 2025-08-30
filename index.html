@@ -194,6 +194,73 @@
 
   <!-- JS -->
   <script src="script.js"></script>
+  <script>
+// ===========================
+// PLAN DE HYPE & REVEAL
+// ===========================
+
+// Elemento que vamos a usar para mostrar mensajes y contador
+const heroTitle = document.querySelector('.hero .title');
+const heroSubtitle = document.querySelector('.hero .subtitle');
+
+// Fecha objetivo
+const targetDate = new Date("Sep 7, 2025 00:00:00").getTime();
+
+// Función para actualizar el contador y mensajes
+function updateHype() {
+  const now = new Date().getTime();
+  const diff = targetDate - now;
+
+  // Mensajes por fecha
+  const today = new Date();
+  const mmdd = ("0" + (today.getMonth()+1)).slice(-2) + "-" + ("0" + today.getDate()).slice(-2);
+
+  let hint = "";
+  if(mmdd === "08-31") hint = "Algo especial viene pronto… 👀";
+  else if(mmdd === "09-01") hint = "Algo solo para ti ✨";
+  else if(mmdd === "09-02") hint = "Nuestra historia apenas empieza… 💌";
+  else if(mmdd === "09-03") hint = "Un pequeño secreto se revela 🌹";
+  else if(mmdd === "09-04") hint = "Ya casi, mi amor… 💖";
+  else if(mmdd === "09-05") hint = "Prepárate, amor… ⏳";
+  else if(mmdd === "09-06") hint = "Mañana lo descubrirás 💫";
+
+  // Mostrar mensaje solo si hay hint
+  if(hint) heroSubtitle.textContent = hint;
+
+  // Countdown
+  let countdownText = "";
+  if(diff <= 0){
+    countdownText = "💖 Hoy es nuestro día 💖";
+    heroTitle.textContent = "¡Sorpresa, Karleny! 🎉";
+    heroSubtitle.textContent = "Todo lo que preparé para vos está aquí abajo 👇";
+    // Revelar contenido especial: destapamos el sobre/fotos/playlist
+    document.getElementById('futureCard').style.display = "block";
+  } else {
+    const days = Math.floor(diff / (1000*60*60*24));
+    const hours = Math.floor((diff % (1000*60*60*24))/(1000*60*60));
+    const mins = Math.floor((diff % (1000*60*60))/(1000*60));
+    const secs = Math.floor((diff % (1000*60))/1000);
+    countdownText = `${days}d ${hours}h ${mins}m ${secs}s`;
+  }
+
+  // Creamos o actualizamos el contador
+  let countdownDiv = document.getElementById("hypeCountdown");
+  if(!countdownDiv){
+    countdownDiv = document.createElement("div");
+    countdownDiv.id = "hypeCountdown";
+    countdownDiv.style.fontSize = "2rem";
+    countdownDiv.style.margin = "20px 0";
+    heroTitle.parentNode.insertBefore(countdownDiv, heroTitle.nextSibling);
+  }
+  countdownDiv.textContent = countdownText;
+}
+
+// Inicial
+updateHype();
+// Actualizar cada 1 segundo
+setInterval(updateHype, 1000);
+</script>
+
 
 </body>
 </html>
