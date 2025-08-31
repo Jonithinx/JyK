@@ -251,7 +251,7 @@ function spawnDailyHype() {
   if (!hypeCielo) return;
 
   // Solo mostrar frases si faltan 7 días o menos
-  if (diffDays > 8) return;
+  if (diffDays > 7) return;
 
   // Calcular índice de frase según el día (7 días antes → índice 0, 1 día antes → índice 6)
   const dayIndex = 7 - diffDays;
