@@ -18,6 +18,7 @@ if (now >= targetDate) {
 
   // ---
   // A partir de aquí, el código de la página principal
+  // Todas estas funciones y eventos solo se ejecutan el día del aniversario
   // ---
 
   // Helpers
@@ -210,22 +211,33 @@ if (now >= targetDate) {
     toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   }
 
-  // Formulario de mensaje
+  // Formulario de mensaje (ahora sí, con envío a Formspree)
   const mensajeForm = qs('#mensajeForm');
   const mensajeInput = qs('#mensajeInput');
   const mensajeConfirm = qs('#mensajeConfirm');
 
   if (mensajeForm && mensajeInput && mensajeConfirm) {
-    mensajeForm.addEventListener('submit', e => {
+    mensajeForm.addEventListener('submit', async e => {
       e.preventDefault();
       const mensaje = mensajeInput.value.trim();
       if (!mensaje) return;
 
-      console.log("Mensaje enviado:", mensaje);
+      const response = await fetch(mensajeForm.action, {
+        method: mensajeForm.method,
+        body: new FormData(mensajeForm),
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
 
-      mensajeInput.value = '';
-      mensajeConfirm.style.display = 'block';
-      setTimeout(() => mensajeConfirm.style.display = 'none', 3500);
+      if (response.ok) {
+        console.log("Mensaje enviado a Formspree");
+        mensajeInput.value = '';
+        mensajeConfirm.style.display = 'block';
+        setTimeout(() => mensajeConfirm.style.display = 'none', 3500);
+      } else {
+        console.error("Error al enviar el mensaje.");
+      }
     });
   }
 
@@ -235,22 +247,15 @@ if (now >= targetDate) {
   loadingScreen.style.display = 'block';
 
   // Frases que se muestran la semana previa
-const phrasesByDay = [
-  // Day 7
-  "Solo faltan 7 días para el mejor recuerdo.",
-  // Day 6
-  "La cuenta regresiva a nuestro día, 7/9/2019, ha empezado.",
-  // Day 5
-  "El beat de nuestra historia va a tener un nuevo hit. Y va por vos.",
-  // Day 4
-  "Ni un millón de bytes de código podrían describir lo que siento.",
-  // Day 3
-  "Tu amor es mi melodía favorita. El 7 de septiembre la escuchas completa.",
-  // Day 2
-  "Estamos a un día de celebrar lo que somos. ¿Estás lista?",
-  // Day 1
-  "La espera ha terminado. Solo falta que le des play."
-];
+  const phrasesByDay = [
+    "Solo faltan 7 días para el mejor recuerdo.",
+    "La cuenta regresiva a nuestro día, 7/9/2019, ha empezado.",
+    "El beat de nuestra historia va a tener un nuevo hit. Y va por ti.",
+    "Ni un millón de bytes de código podrían describir lo que siento.",
+    "Tu amor es mi melodía favorita. El 7 de septiembre la escuchas completa.",
+    "Estamos a un día de celebrar lo que somos. ¿Estás lista?",
+    "La espera ha terminado. Solo falta que le des play."
+  ];
 
   // Calculamos los días que faltan
   const diffTime = targetDate.getTime() - now.getTime();
